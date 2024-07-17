@@ -1,0 +1,43 @@
+lrobot_controller:
+  joints: {
+    type: string_array,
+    default_value: [],
+    description: 'List of joints controlled by this controller',
+  }
+  operation_mode: {
+    type: int,
+    description: 'ID of operation mode to use',
+  }
+  command_poll_freq: {
+    type: int,
+    description: 'Frequency of polling command results',
+  }
+  wheels_per_side: {
+    type: int,
+    default_value: 0,
+    description: "Number of wheels on each side of the robot.",
+  }
+  wheels_separation: {
+    type: double,
+    default_value: 0.0,
+    description: "The shortest distance between the front and rear wheels. If this parameter is incorrect, the robot's behavior in the curve will be incorrect.",
+  }
+  wheel_radius: {
+    type: double,
+    default_value: 0.0,
+    description: "Radius of a wheel, used for transformation of linear velocity into wheel rotations. If this parameter is wrong the robot will move faster or slower then expected.",
+  }
+  linear:
+    x:
+      velocity_clamp: {
+        type: double,
+        default_value: .NAN,
+        description: "Velocity clamp. Symmetrical in both positive and negative direction.",
+  }
+  angular:
+    z:
+      velocity_clamp: {
+        type: double,
+        default_value: .NAN,
+        description: "Velocity clamp. Symmetrical in both positive and negative direction.",
+  }

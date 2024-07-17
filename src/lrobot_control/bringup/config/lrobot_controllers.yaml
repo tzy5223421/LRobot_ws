@@ -1,0 +1,30 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 10 #Hz
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    lrobot_controller:
+      type: lrobot_controller/LRobotController
+
+lrobot_controller:
+  ros__parameters:
+    joints:
+      - front_wheel_joint
+      - back_wheel_joint
+      - front_motor_joint
+      - back_motor_joint
+    # front_wheel_names: ["front_wheel_joint"]
+    # back_wheel_names: ["back_wheel_joint"]
+    # front_motor_names: ["front_motor_joint"]
+    # back_motor_names: ["back_motor_joint"]
+    wheels_separation: 0.805
+    wheels_per_side: 1 #
+    wheel_radius: 0.04
+    linear.x.velocity_clamp: 2.0
+    angular.z.velocity_clamp: 1.57
+    operation_mode: 1
+    command_poll_freq: 5
+    interface_name: position
+

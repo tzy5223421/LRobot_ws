@@ -1,0 +1,9 @@
+<library path="lrobot_controller">
+  <class name="lrobot_controller/LRobotController" 
+  type="lrobot_controller::LRobotController" 
+  base_class_type="controller_interface::ControllerInterface">
+  <description>
+    lrobot driver controller.
+  </description>
+  </class>
+</library>

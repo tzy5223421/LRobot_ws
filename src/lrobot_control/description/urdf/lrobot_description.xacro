@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+ <xacro:macro name="lrobot" params="prefix">
+  <link
+    name="base_link">
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="front_motor_link">
+    <inertial>
+      <origin
+        xyz="1.05575716112943E-05 0.00570468333581119 -0.0090747413608689"
+        rpy="0 0 0" />
+      <mass
+        value="0.51702420409672" />
+      <inertia
+        ixx="0.000968082619732085"
+        ixy="-3.12658211227848E-07"
+        ixz="8.78065277324308E-08"
+        iyy="0.000876835485106486"
+        iyz="2.78350471345476E-05"
+        izz="0.0016511568483983" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/front_motor_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/front_motor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_motor_joint"
+    type="revolute">
+    <origin
+      xyz="0.47162 0 0.0235"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="front_motor_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="5" velocity="6.28" lower="-2.1" upper="2.1"/>
+  </joint>
+  <link
+    name="front_wheel_link">
+    <inertial>
+      <origin
+        xyz="1.16819358778053E-06 -2.81798078207851E-09 1.15138368977918E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0999721992667236" />
+      <inertia
+        ixx="5.9133985167861E-05"
+        ixy="1.07483000251058E-07"
+        ixz="4.2321873649809E-22"
+        iyy="0.000103690790939151"
+        iyz="3.87361461130485E-19"
+        izz="5.91337258914627E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/front_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.870588235294118 0.870588235294118 0.870588235294118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/front_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="front_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.0248501151383689"
+      rpy="0 0 0" />
+    <parent
+      link="front_motor_link" />
+    <child
+      link="front_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="back_motor_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="0" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/back_motor_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/back_motor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_motor_joint"
+    type="revolute">
+    <origin
+      xyz="-0.33338 0.0 0.0235"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="back_motor_link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="5" velocity="6.28" lower="-2.1" upper="2.1"/>
+  </joint>
+  <link
+    name="back_wheel_link">
+    <inertial>
+      <origin
+        xyz="-1.1681935878638E-06 2.81798072504829E-09 1.15138368873835E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.0999721992667252" />
+      <inertia
+        ixx="5.91339851678625E-05"
+        ixy="1.07483000251002E-07"
+        ixz="1.3540110551282E-22"
+        iyy="0.000103690790939154"
+        iyz="-2.31678884454168E-19"
+        izz="5.91337258914642E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/back_wheel_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.870588235294118 0.870588235294118 0.870588235294118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="file://$(find lrobot_control)/meshes/back_wheel_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="back_wheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0 -0.02485"
+      rpy="0 0 0" />
+    <parent
+      link="back_motor_link" />
+    <child
+      link="back_wheel_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+   </xacro:macro>
+</robot>

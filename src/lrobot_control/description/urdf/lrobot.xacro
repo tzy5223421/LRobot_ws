@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="lrobot_drive">
+  <xacro:arg name="prefix" default="" />
+  <xacro:arg name="use_mock_hardware" default="false" />
+
+  <!-- 导入基本的几何形状 -->
+  <xacro:include filename="$(find lrobot_control)/urdf/lrobot_description.xacro" />
+
+  <!-- 导入 ros2_control 描述部分 -->
+  <xacro:include filename="$(find lrobot_control)/ros2_control/lrobot.ros2_control.xacro" />
+
+  <xacro:lrobot prefix="$(arg prefix)" />
+
+  <xacro:lrobot_ros2_control
+    name="lrobot" prefix="$(arg prefix)" 
+    bus_config="$(find lrobot_canopen)/config/canopen/bus.yml"
+    master_config="$(find lrobot_canopen)/config/canopen/master.dcf"
+    can_interface_name="vcan0" 
+    master_bin=""/>
+
+</robot>
